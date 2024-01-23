@@ -1,5 +1,6 @@
 package com.suspensive.springbootjparelationship.models.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -24,7 +25,7 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "user_id")
-    private List<Note> notes;
+    private List<Note> notes = new ArrayList<>();
 
     public User(){
 
@@ -72,6 +73,4 @@ public class User {
         return "User [id=" + id + ", name=" + name + ", lastname=" + lastname + ", notes=" + notes + "]";
     }
 
-    
-    
 }
