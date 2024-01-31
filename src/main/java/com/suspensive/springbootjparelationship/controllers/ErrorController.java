@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.suspensive.springbootjparelationship.models.dtos.ErrorDTO;
+import com.suspensive.springbootjparelationship.models.exceptions.NoteNotFoundException;
 
 @RestControllerAdvice
 public class ErrorController {
@@ -20,11 +21,21 @@ public class ErrorController {
     }
 
     @ExceptionHandler({NullPointerException.class})
-    public ResponseEntity<ErrorDTO> userNotFind(){
+    public ResponseEntity<ErrorDTO> userNotFound(){
         ErrorDTO userNotFindError = new ErrorDTO();
-        userNotFindError.setError("User could not be find!");
+        userNotFindError.setError("User could not be found!");
         userNotFindError.setMessage("Please try again with an existing user");
         userNotFindError.setStatus(400);
         return ResponseEntity.badRequest().body(userNotFindError);
     }
+
+    @ExceptionHandler({NoteNotFoundException.class})
+    public ResponseEntity<ErrorDTO> noteNotFound(){
+        ErrorDTO noteNotFoundError = new ErrorDTO();
+        noteNotFoundError.setError("Note could not be found");
+        noteNotFoundError.setMessage("Please try again with an existing note");
+        noteNotFoundError.setStatus(400);
+        return ResponseEntity.badRequest().body(noteNotFoundError);
+    }
+
 }

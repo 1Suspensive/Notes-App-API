@@ -7,11 +7,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suspensive.springbootjparelationship.models.entities.Note;
@@ -44,5 +47,16 @@ public class NoteController {
     public Map<String,List<String>> filterAllTags(@PathVariable Long id) {
         return service.filterAllUserTags(id);
     }
+
+    @PatchMapping("/edit/{id}")
+    public ResponseEntity<Map<String,String>> edit(@PathVariable Long id,@RequestParam Long noteId, @RequestBody Note note){
+        service.editNote(id, noteId, note);
+        return new ResponseEntity<Map<String,String>>(Collections.singletonMap("message","Note was edited sucessfully"), null,HttpStatus.OK);
+    }
     
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Map<String,String>> delete(@PathVariable Long id, @RequestParam Long noteId){
+        service.deleteNote(id, noteId);
+        return ResponseEntity.ok().body(Collections.singletonMap("message","Note was deleted sucessfully"));
+    }
 }

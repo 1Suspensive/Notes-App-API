@@ -12,4 +12,6 @@ public interface UserService {
     public boolean addNote(Long id, Note note);
     public List<Note> getUserNotes(Long id);
     public Map<String, List<String>> filterAllUserTags(Long id);
+    public void editNote(Long id, Long noteId, Note note);
+    public void deleteNote(Long id, Long noteId);
 }
