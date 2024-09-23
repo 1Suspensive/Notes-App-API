@@ -19,10 +19,10 @@ To get more help on the SpringBoot use go check out the [SpringBoot Getting Star
 mvn wrapper error
 ----
 ERROR -> [notes_api 7/9] RUN ./mvnw dependency:go-offline                                                                                                                     0.7s
-
 [notes_api 7/9] RUN ./mvnw dependency:go-offline:
 0.611 /bin/sh: ./mvnw: not found
-
 failed to solve: process "/bin/sh -c ./mvnw dependency:go-offline" did not complete successfully: exit code: 127
 
 SOLUTION -> Run `mvn -N wrapper:wrapper` to generate the mvnw file.
+
+To get maven in your device go to [Downloading Apache Maven 3.9.9](https://maven.apache.org/download.cgi) page.
