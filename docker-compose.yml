@@ -2,13 +2,13 @@ version: "3.9"
 services:
   notes_api:
     image: notes-api-image
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://notes_db:3306/notes_app
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 12345678
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-        - DATABASE_URL=jdbc:mysql://notes_db:3306/notes_app
-        - DATABASE_USERNAME=root
-        - DATABASE_PASSWORD=12345678
     ports:
       - "8080:8080"
     depends_on:
@@ -16,7 +16,6 @@ services:
 
   notes_db:
     image: mysql
-    container_name: mysql-notes
     environment:
         MYSQL_ROOT_PASSWORD: 12345678
         MYSQL_DATABASE: notes_app

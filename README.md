@@ -12,3 +12,17 @@ Open the root project folder, then run `docker-compose up`. Navigate to `http://
 run `docker-compose down` and remove the notes-api-image created, then re-run `docker-compose up` in order to see the changes.
 
 To get more help on the SpringBoot use go check out the [SpringBoot Getting Started Guide](https://github.com/spring-guides/gs-spring-boot.git) page.
+
+## COMMON ERRORS
+
+----
+mvn wrapper error
+----
+ERROR -> [notes_api 7/9] RUN ./mvnw dependency:go-offline                                                                                                                     0.7s
+
+[notes_api 7/9] RUN ./mvnw dependency:go-offline:
+0.611 /bin/sh: ./mvnw: not found
+
+failed to solve: process "/bin/sh -c ./mvnw dependency:go-offline" did not complete successfully: exit code: 127
+
+SOLUTION -> Run `mvn -N wrapper:wrapper` to generate the mvnw file.
