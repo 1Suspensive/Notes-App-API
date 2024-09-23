@@ -4,7 +4,7 @@ This project was generated with [SpringBoot] version 3.2.2 and [JAVA] version 17
 
 ## Development server
 
-Run `./mvnw spring-boot:run` for a dev server. Navigate to `http://localhost:8080/swagger-ui/index.html` to see the documentation.
+Change database credentials in application.properties, then run `./mvnw spring-boot:run` for a dev server. Navigate to `http://localhost:8080/swagger-ui/index.html` to see the documentation.
 
 ## Deploy on Docker
 
